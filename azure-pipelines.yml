@@ -14,6 +14,11 @@ steps:
   inputs:
     SonarQube: 'sonarmonitor'
     scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=EmailApp_EmailApp
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -33,7 +38,17 @@ steps:
     tags: |
       $(Build.BuildId)
       latest
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
 - task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
-- task: SonarQubeAnalyze@5
