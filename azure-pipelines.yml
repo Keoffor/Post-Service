@@ -29,3 +29,7 @@ steps:
     tags: |
       $(Build.BuildId)
       latest
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'sonarmonitor'
+    scannerMode: 'Other'
