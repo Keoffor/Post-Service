@@ -33,3 +33,5 @@ steps:
   inputs:
     SonarQube: 'sonarmonitor'
     scannerMode: 'Other'
+
+- task: SonarQubeAnalyze@5
