@@ -28,4 +28,4 @@ steps:
     Dockerfile: '**/Dockerfile'
     tags: |
       $(Build.BuildId)
-      $(Build.latest)
+      latest
