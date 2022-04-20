@@ -50,18 +50,18 @@ spec:
       targetPort: 8000
   selector:
     app: postservice-deployment
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: post-service-monitor
-spec:
-  selector:
-    matchLabels:
-      app: postservice-service
-  endpoints:
-    - port: http-app1
-      path: "/actuator/prometheus"
+#---
+#apiVersion: monitoring.coreos.com/v1
+#kind: ServiceMonitor
+#metadata:
+#  name: post-service-monitor
+#spec:
+#  selector:
+#    matchLabels:
+#      app: postservice-service
+#  endpoints:
+#    - port: http-postservice
+#      path: "/actuator/prometheus"
 
 
 
