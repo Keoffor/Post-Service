@@ -79,7 +79,7 @@ pipeline {
                            projectId: 'stagingpro',
                            clusterName: 'stagingpro-gke',
                            zone: 'us-central1',
-                           manifestPattern: 'src/Kubernetes/',
+                           manifestPattern: 'Kubernetes/',
                            credentialsId: 'stagingpro',
                            verifyDeployments: true
                        ])
